@@ -28,12 +28,6 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io
 # Create the docker group.
 sudo groupadd docker
 
-# Add your user to the docker group.
-sudo usermod -aG docker $USER
-
-# reboot or type below for activate new group
-newgrp docker
-
 # install Nvidia Docker
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
    && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
