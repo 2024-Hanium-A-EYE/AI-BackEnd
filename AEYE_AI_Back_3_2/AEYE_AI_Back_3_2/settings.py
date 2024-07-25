@@ -11,10 +11,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -26,6 +29,7 @@ SECRET_KEY = 'django-insecure-rp_7ru6j(-ox_by(-(&!0_3k*dz@n4!yl+^63u+4$rt!4nyuov
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 
 # Application definition
