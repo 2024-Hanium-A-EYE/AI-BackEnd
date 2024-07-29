@@ -6,11 +6,14 @@ Django == 3.2
 # REST API Framework
 djangorestframework == 3.13.1
 
-#request
+# request
 requests
 
-#nodejs and npm
-nodejs npm
+# nodejs
+nodejs
+
+# npm
+npm
 
 # pytest
 pytest
