@@ -17,3 +17,6 @@ npm
 
 # pytest
 pytest
+
+# colorama
+colorama
