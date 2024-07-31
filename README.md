@@ -89,6 +89,6 @@ Shell을 시작하면 AEYE 웹 서버를 시작하기 위해 필요한 `dependen
 ## REST API EndPoint
 아래는 AEYE 웹 벡엔드 서버에서 제공하는 REST API EndPoint 입니다. HTTP POST 요청을 할 경우, 다음 주소를 이용하면 됩니다.
 ```bash
-https://127.0.0.1:8000/api/receive-image/ 
+https://127.0.0.1:8000/api/receive-image
 ```
 
