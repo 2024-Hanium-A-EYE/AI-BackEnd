@@ -12,8 +12,10 @@ class ReceiveImageView(APIView):
         serializer = UploadedImageSerializer(data = request.FILES)
 
         if serializer.is_valid() :
+
+            print("===============Received Data From Client===============")
             serializer.save()
 
-            return Response({"GOOD!"}, status=200)
+            return Response("Reeived Well", status=200)
         else:
-            return Response(serializer.errors, status=400)
+            return Response("Received Wrong Data!", status=400)
