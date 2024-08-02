@@ -37,7 +37,9 @@ def print_log(type, string) :
                                Fore.GREEN + "[OpticNet - SUCCESS] [ " + string +" ] " + Fore.RESET +
                                "\n-----------------------------------------")
     elif type == "error" :
-        return app.logger.info(Fore.RED + "[OpticNet - FAIL] [" + string +"] " + Fore.RESET)
+        return app.logger.info("\n-----------------------------------------\n" + 
+                               Fore.RED + "[OpticNet - FAIL] [" + string +"] " + Fore.RESET +
+                               "\n-----------------------------------------")
 
 def send_response(status, code, message, data) :
     print_log(status, message)
@@ -68,7 +70,11 @@ def ai_inference() :
         print_log("error", "Server Received Empty File")
         return send_response('error', 400, 'No selected file', request.files) 
 
-    
+    ######## RUN INFERENCE ###################
+    ## response = inference('/DATA/', '/DATA/AI_Module_weight/Optic_net-3-classes-Srinivasan2014.hf','Srinivasan2014')
+    ## print_log("SUCCESS", response)
+    ##########################################
+
     return "GOOD"
 
 #    if file and check_inference_format(file.filename):
@@ -80,8 +86,7 @@ def ai_inference() :
         
 
         # Start Inference #
-        ## response = inference('/DATA/', '/DATA/AI_Module_weight/Optic_net-3-classes-Srinivasan2014.hf','Srinivasan2014')
-        ## print_log("SUCCESS", response)
+        
 
         ###################
 
