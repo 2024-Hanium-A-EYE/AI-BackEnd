@@ -7,7 +7,7 @@ BLUE='\033[38;5;81m'
 NC='\033[0m' # No Color (Defualt colour)
 
 ##################################################################
-install_status_VAR=1
+install_status_vel=1
 
 total_progress=3
 
@@ -24,7 +24,7 @@ initialize_system() {
   sudo apt install -y
   
   if [ $? -eq 0 ]; then
-    install_status_VAR=0
+    install_status_vel=0
     echo "System package list updated successfully."
     echo -e "${BLUE}[0/$total_progress] ${NC}Install figlet..."
     sudo apt install figlet -y
@@ -33,7 +33,7 @@ initialize_system() {
       clear
       print_AEYE_AI
     else
-      install_status_VAR=1
+      install_status_vel=1
       echo -e "${RED}[0/$total_progress] Failed to install." ${NC}
     fi
     
@@ -51,7 +51,7 @@ install_dependencies () {
   if [ $? -eq 0 ]; then
     echo -e "${BLUE}[1/$total_progress] ${NC}Dependencies are installed successfully."  
   else
-    install_status_VAR=1
+    install_status_vel=1
     echo -e "${RED}[1/$total_progress] Failed to install." ${NC}
   fi
 }
@@ -72,7 +72,7 @@ intialize_docker_install () {
   if [ $? -eq 0 ]; then
     echo -e "${BLUE}[2/$total_progress] ${NC}Docker install initialization Succeed."
   else
-    install_status_VAR=1
+    install_status_vel=1
     echo -e "${RED}[2/$total_progress] ${NC}Dokcer install initialization Failed."
   fi
 }
@@ -87,7 +87,7 @@ install_docker () {
     # Create the docker group.
     sudo groupadd docker
   else
-    install_status_VAR=1
+    install_status_vel=1
     echo -e "${RED}[2/3] ${NC}Failed to install docker"
   fi
   
@@ -108,28 +108,28 @@ install_nvidia_docker() {
 }
 
 install() {
-  if [ $install_status_VAR -eq 0 ]; then
+  if [ $install_status_vel -eq 0 ]; then
     echo -e "${BLUE}[1/$total_progress] ${NC}Install dependencies..."
     install_dependencies
   else
-    echo -e "${RED}[1/$total_progress] ${NC}Failed to install dependencies due to install_status_VAR = 1."
+    echo -e "${RED}[1/$total_progress] ${NC}Failed to install dependencies due to install_status_vel = 1."
   fi
   
-  if [ $install_status_VAR -eq 0 ]; then
+  if [ $install_status_vel -eq 0 ]; then
     echo -e "${BLUE}[2/$total_progress] ${NC}Install Docker..."
     figlet Install Docker
     install_docker 
   else
-    echo -e "${RED}[2/$total_progress] ${NC}Failed to install Docker due to install_status_VAR = 1"
+    echo -e "${RED}[2/$total_progress] ${NC}Failed to install Docker due to install_status_vel = 1"
   fi
     
-  if [ $install_status_VAR -eq 0 ]; then
+  if [ $install_status_vel -eq 0 ]; then
     echo -e "${BLUE}[3/$total_progress] ${NC}Install Nvidia Doocker...."
     figlet Install 
     figlet Nvidia Docker
     install_nvidia_docker
   else
-    echo -e "${RED}[3/$total_progress] ${NC}Failed to install Nvidia Docker due to install_status_VAR = 1"
+    echo -e "${RED}[3/$total_progress] ${NC}Failed to install Nvidia Docker due to install_status_vel = 1"
   fi
 }
 
