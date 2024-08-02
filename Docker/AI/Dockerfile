@@ -13,3 +13,4 @@ RUN pip install flask
 #############################################################
 # Cleaning
 
+WORKDIR /app/

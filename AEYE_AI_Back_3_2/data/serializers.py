@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Request_Image_Model, Initiate_AI_Model
 
+# get Json File
 class InitiateAI_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Initiate_AI_Model
