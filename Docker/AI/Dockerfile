@@ -9,13 +9,13 @@ RUN pip install pycm==1.9 matplotlib sklearn
 
 RUN pip install --upgrade pip
 RUN pip install opencv-python
-RUN pip install flask
+RUN pip install Flask==1.1.4
 RUN pip install colorama
+
 #############################################################
 # Copy Files
 WORKDIR /app/
-
-COPY ../../AI/ /app/ 
+COPY ../../AI/ /app/
 
 #############################################################
 # Cleaning
@@ -23,5 +23,9 @@ COPY ../../AI/ /app/
 #############################################################
 # RUN
 
-CMD ["python", "run.py", "--p", "3000"]
+EXPOSE 7070
+EXPOSE 8888
+# CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=5000", "--no-browser", "--allow-root"]
+
+CMD ["python", "run.py", "--p", "7070"]
 

@@ -167,7 +167,7 @@ import argparse
 
 if __name__ == '__main__' :
     parser = argparse.ArgumentParser(description='Run Flask app on a specific port.')
-    parser.add_argument('--p', type=int, default=3000, help='Port to run the Flask app on')
+    parser.add_argument('--p', type=int, default=7070, help='Port to run the Flask app on')
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO)

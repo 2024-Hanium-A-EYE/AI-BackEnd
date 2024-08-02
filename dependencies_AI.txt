@@ -20,3 +20,6 @@ pytest
 
 # colorama
 colorama
+
+# pillow
+pillow

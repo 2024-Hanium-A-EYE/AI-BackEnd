@@ -119,7 +119,7 @@ class AI_Inference_View(APIView):
 ##################################################################################
 # Developing
 
-# /api/develop/
+# /api/ai-develop/
 class Developing_View(APIView) :
     parser_classes = (MultiPartParser, FormParser)
 
@@ -141,10 +141,13 @@ class Developing_View(APIView) :
             current_dir = os.path.dirname(__file__)
             image_path = os.path.join(current_dir, '0.png')
 
+
             # 파일을 열고 POST 요청을 보냄.
             with open(image_path, 'rb') as image_file:
                 files = {'file' : image_file}
                 data = {'name': 'good'}
+    
+                print_log('SUCCESS', "GOOD", '[DEVELOP]')
 
                 response = requests.post(server_url, data=data, files=files)
 

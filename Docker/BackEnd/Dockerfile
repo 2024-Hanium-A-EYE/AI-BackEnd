@@ -19,11 +19,16 @@ RUN pip install -r dependencies_AI.txt
 #############################################################
 # Clean
 
+#############################################################
+# Copy DIR
+WORKDIR /app/
+
+COPY ../../AEYE_AI_Back_3_2/ /app/
 
 #############################################################
 # Result
 
-WORKDIR /app
-COPY AEYE_AI_Back_3_2 /app/
-EXPOSE 8000
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+EXPOSE 2000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:2000"]

@@ -8,12 +8,12 @@ services:
       context: ..
       dockerfile: Docker/BackEnd/Dockerfile
     ports:
-    - "6000:6000"
+    - "2000:2000"
     volumes:
-    - /AEYE_AI_Back_3_2/:/app/
+    - ../AEYE_AI_Back_3_2/:/app/
     networks:
       - ai_network
-    command: python manage.py runserver 0.0.0.0:6000
+    command: python3.5 manage.py runserver 0.0.0.0:2000
     
   ai:
     image: aeye_ai:1.0
@@ -22,12 +22,14 @@ services:
       context: ..
       dockerfile: Docker/AI/Dockerfile
     ports:
-    - "3000:3000"
+    - "7070:7070"
+    - "6006:6006"
+    - "8888:8888"
     volumes:
-    - /AI/:/app/
+    - ../AI/:/app/
     networks:
       - ai_network
-    command: python run.py
+    command: python run.py --p 7070
 
 networks:
   ai_network:

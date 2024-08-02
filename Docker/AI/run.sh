@@ -1,6 +1,6 @@
 run()
 {
-  docker build -t --progress=plain trial:latest .
+  docker build --progress=plain .
 }
 
 run

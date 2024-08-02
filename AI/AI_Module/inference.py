@@ -20,7 +20,7 @@ def print_pred(preds,classes):
         
         else:
             None
-    print(x)
+    return x
 
 def image_preprocessing(img):
     img = cv2.imread(img)
@@ -43,8 +43,7 @@ def inference(img,weights,dataset):
     
     preds = model.predict(processsed_img,batch_size=None,steps=1)
   
-   
-    print_pred(preds,classes)
+    return preds, classes
     
     
     
