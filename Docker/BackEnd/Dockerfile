@@ -1,5 +1,8 @@
 FROM python:3.6-slim
 
+
+#############################################################
+# Install Dependencies
 WORKDIR /app
 COPY dependencies_AI.txt /app/
 
@@ -11,6 +14,14 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install --upgrade pip
 RUN pip install -r dependencies_AI.txt
+
+
+#############################################################
+# Clean
+
+
+#############################################################
+# Result
 
 WORKDIR /app
 COPY AEYE_AI_Back_3_2 /app/
