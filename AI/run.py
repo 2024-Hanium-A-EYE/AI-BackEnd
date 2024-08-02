@@ -58,10 +58,10 @@ def index() :
 
 @app.route('/api/ai-inference', methods=['POST'])
 def ai_inference() :
-    print_log("active", f"Client Requested AI Inference \nReceived : {request.form}")
+    print_log("active", "Client Requested AI Inference \nReceived : {}".format(request.form))
     name = request.form['name']
 
-    if name is '' :
+    if name == '' :
         return send_response('error', 400, 'No file part', name)
 
     file = request.files['file']

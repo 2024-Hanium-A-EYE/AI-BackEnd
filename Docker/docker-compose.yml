@@ -2,25 +2,33 @@ version: '3.8'
 
 services:
   backend:
+    image: aeye_ai_back:1.0
+    container_name: ai_back_container
     build:
       context: ..
       dockerfile: Docker/BackEnd/Dockerfile
-    image: aeye_ai_back:1.0
     ports:
-    - "8000:8000"
+    - "6000:6000"
     volumes:
-    - .:/app
-    command: python manage.py runserver 0.0.0.0:8000
+    - /AEYE_AI_Back_3_2/:/app/
+    networks:
+      - ai_network
+    command: python manage.py runserver 0.0.0.0:6000
     
   ai:
+    image: aeye_ai:1.0
+    container_name: opticnet_container
     build:
       context: ..
       dockerfile: Docker/AI/Dockerfile
-    image: aeye_ai:1.0
     ports:
-    - "8888:8888"
+    - "3000:3000"
     volumes:
-    - .:/app
-    command: python manage.py runserver 0.0.0.0:8000
+    - /AI/:/app/
+    networks:
+      - ai_network
+    command: python run.py
 
-    
+networks:
+  ai_network:
+    driver: bridge
