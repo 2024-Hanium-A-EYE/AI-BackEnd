@@ -5,13 +5,18 @@ import keras.backend as K
 from keras.models import load_model
 import cv2
 import numpy as np
+import requests
 
+url = 'http://opticnet_container:3000/log'
 
 def print_pred(preds,classes):
 
     preds = preds.ravel()
     y = len(classes)
-    x=""
+    
+    data = {"status" : "active", "message" : "GOOD"}
+    requests.post(url=url, data=data)
+
     for i in range(y):
         preds_rounded = np.around(preds,decimals=4)
         x = x+classes[i]+": "+str(preds_rounded[i])+"%"

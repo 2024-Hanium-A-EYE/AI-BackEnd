@@ -17,6 +17,7 @@ RUN pip install --upgrade pip
 RUN pip install opencv-python
 RUN pip install Flask==1.1.4
 RUN pip install colorama
+RUN pip install requests
 
 RUN apt-get update && apt-get install -y libgl1-mesa-glx
 

@@ -38,13 +38,23 @@ from colorama import Fore, Back, Style
 def print_log(type, string) :
     if type == "active" :
         return app.logger.info("\n-----------------------------------------\n" + 
-                               Fore.GREEN + "[OpticNet - SUCCESS] [ " + string +" ] " + Fore.RESET +
+                               Fore.GREEN + "[OpticNet Back - SUCCESS] [ " + string +" ] " + Fore.RESET +
                                "\n-----------------------------------------")
     elif type == "error" :
         return app.logger.info("\n-----------------------------------------\n" + 
-                               Fore.RED + "[OpticNet - FAIL] [" + string +"] " + Fore.RESET +
+                               Fore.RED + "[OpticNet Back - FAIL] [" + string +"] " + Fore.RESET +
                                "\n-----------------------------------------")
 
+def print_lo_ai(type, string) :
+    if type == "active" :
+        return app.logger.info("\n-----------------------------------------\n" + 
+                               Fore.GREEN + "[OpticNet AI - SUCCESS] [ " + string +" ] " + Fore.RESET +
+                               "\n-----------------------------------------")
+    elif type == "error" :
+        return app.logger.info("\n-----------------------------------------\n" + 
+                               Fore.RED + "[OpticNet AI - FAIL] [" + string +"] " + Fore.RESET +
+                               "\n-----------------------------------------")
+    
 def send_response(status, code, message, data) :
     print_log(status, message)
     return jsonify({'status': status, 'code' : code, 'message': message, 'data': data}), code
@@ -54,6 +64,13 @@ def send_response(status, code, message, data) :
 def index() :
     print_log("SUCCESS", "Client Accessed AI Server...")
     return send_response('active', 200, 'Client Accessed AI Server', request.files)
+
+@app.route('/log')
+def get_log() :
+    status = request.form['status']
+    message = request.form['message']
+
+    print_lo_ai(status, message)
 
 ##################################################################
 # AI
@@ -78,6 +95,7 @@ def ai_inference() :
     data_dir = '/DATA/'
     model_path = '/DATA/AI_Module_weight/Optic_net-3-classes-Srinivasan2014.hf'
     model_name = 'Srinivasan2014'
+    print_log("active", "start AI")
     response = inference(data_dir, model_path, model_name)
     print_log("active", response)
     ##########################################
