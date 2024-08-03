@@ -79,7 +79,7 @@ def ai_inference() :
     model_path = '/DATA/AI_Module_weight/Optic_net-3-classes-Srinivasan2014.hf'
     model_name = 'Srinivasan2014'
     response = inference(data_dir, model_path, model_name)
-    print_log("SUCCESS", response)
+    print_log("active", response)
     ##########################################
 
     return "GOOD"
@@ -107,7 +107,7 @@ def ai_inference() :
 
 @app.route('/api/ai-test', methods=['POST'])
 def ai_test():
-    print_log("SUCCESS", "Client Request AI Inference")
+    print_log("active", "Client Request AI Inference")
 
     if 'file' not in request.files:
         return send_response('error', 400, 'No file part', request.files)
@@ -115,11 +115,11 @@ def ai_test():
     file = request.files['file']
     
     if file.filename == '':
-        print_log("ERROR", "Server Received Empty File")
+        print_log("error", "Server Received Empty File")
         return send_response('error', 400, 'No selected file', request.files) 
 
     if file and check_test_format(file.filename):
-        print_log("SUCCESS", "Client Requested AI Inference with Correct Image Format")
+        print_log("active", "Client Requested AI Inference with Correct Image Format")
 
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -139,7 +139,7 @@ def ai_test():
 
 @app.route('/api/ai-train', methods=['POST'])
 def ai_train():
-    print_log("SUCCESS", "Client Request AI Inference")
+    print_log("active", "Client Request AI Inference")
 
     if 'file' not in request.files:
         return send_response('error', 400, 'No file part', request.files)
@@ -147,11 +147,11 @@ def ai_train():
     file = request.files['file']
     
     if file.filename == '':
-        print_log("ERROR", "Server Received Empty File")
+        print_log("active", "Server Received Empty File")
         return send_response('error', 400, 'No selected file', request.files) 
 
     if file and check_train_format(file.filename):
-        print_log("SUCCESS", "Client Requested AI Inference with Correct Image Format")
+        print_log("active", "Client Requested AI Inference with Correct Image Format")
 
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -178,6 +178,6 @@ if __name__ == '__main__' :
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO)
-    print_log("SUCCESS", "Running AI Server...")
+    print_log("active", "Running AI Server...")
     app.run(host='0.0.0.0', port=args.p, debug=True)
 
