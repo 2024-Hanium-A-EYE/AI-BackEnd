@@ -45,7 +45,7 @@ def send_response(status, code, message, data) :
     print_log(status, message)
     return jsonify({'status': status, 'code' : code, 'message': message, 'data': data}), code
 
-    
+# localhost:7070/
 @app.route('/')
 def index() :
     print_log("SUCCESS", "Client Accessed AI Server...")
@@ -172,5 +172,5 @@ if __name__ == '__main__' :
 
     logging.basicConfig(level=logging.INFO)
     print_log("SUCCESS", "Running AI Server...")
-    app.run('127.0.0.1', port=args.p, debug=True)
+    app.run(host='0.0.0.0', port=args.p, debug=True)
 

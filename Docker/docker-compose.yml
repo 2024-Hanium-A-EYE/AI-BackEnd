@@ -9,11 +9,11 @@ services:
       dockerfile: Docker/BackEnd/Dockerfile
     ports:
     - "2000:2000"
-    volumes:
+    volumes:  
     - ../AEYE_AI_Back_3_2/:/app/
     networks:
       - ai_network
-    command: python3.5 manage.py runserver 0.0.0.0:2000
+    command: python manage.py runserver 0.0.0.0:2000
     
   ai:
     image: aeye_ai:1.0
@@ -29,7 +29,7 @@ services:
     - ../AI/:/app/
     networks:
       - ai_network
-    command: python run.py --p 7070
+    command: python run.py
 
 networks:
   ai_network:
