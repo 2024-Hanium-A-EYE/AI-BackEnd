@@ -93,7 +93,7 @@ class AI_Inference_View(APIView):
             serializer.save()
             
             ################ AI Inference 통신 ####################
-            server_url = 'http://127.0.0.1:3000/api/ai-inference'
+            server_url = 'http://opticnet_container:7070/api/ai-inference'
             
 
             # 현재 디렉토리 경로

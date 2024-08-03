@@ -24,7 +24,11 @@ def check_train_format(filename):
 def check_test_format(filename):
     return ''
 
+import locale
+os.environ["LC_ALL"] = "C.UTF-8"
+os.environ["LANG"] = "C.UTF-8"
 
+locale.setlocale(locale.LC_ALL, 'C.UTF-8')
 
 ##################################################################
 # Dependencies
@@ -53,9 +57,9 @@ def index() :
 
 ##################################################################
 # AI
-
+from AI_Module.inference import inference
 # from AI_Module.inference import inference
-
+# {"name" : "GOOD"}
 @app.route('/api/ai-inference', methods=['POST'])
 def ai_inference() :
     print_log("active", "Client Requested AI Inference \nReceived : {}".format(request.form))
@@ -71,8 +75,11 @@ def ai_inference() :
         return send_response('error', 400, 'No selected file', request.files) 
 
     ######## RUN INFERENCE ###################
-    ## response = inference('/DATA/', '/DATA/AI_Module_weight/Optic_net-3-classes-Srinivasan2014.hf','Srinivasan2014')
-    ## print_log("SUCCESS", response)
+    data_dir = '/DATA/'
+    model_path = '/DATA/AI_Module_weight/Optic_net-3-classes-Srinivasan2014.hf'
+    model_name = 'Srinivasan2014'
+    response = inference(data_dir, model_path, model_name)
+    print_log("SUCCESS", response)
     ##########################################
 
     return "GOOD"
