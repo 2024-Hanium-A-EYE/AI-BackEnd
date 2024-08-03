@@ -7,7 +7,12 @@ import cv2
 import numpy as np
 import requests
 
-url = 'http://opticnet_container:3000/log'
+url = 'http://127.0.0.1:3000/log'
+
+# status == active or error
+def print_log(status, message) :
+    data = {'status' : status, 'message' : message}
+    requests.post(url, data=data)
 
 def print_pred(preds,classes):
 
@@ -36,6 +41,7 @@ def image_preprocessing(img):
     return img
 
 def inference(img,weights,dataset):
+    print_log('active', "ented inference")
 
     if dataset=='Srinivasan2014':
         classes=['AMD', 'DME','NORMAL']
@@ -43,7 +49,12 @@ def inference(img,weights,dataset):
         classes = ['CNV', 'DME','DRUSEN','NORMAL']
 
     processsed_img = image_preprocessing(img)
+    print_log('active', "image_preprocessing")
+
     K.clear_session()
+    print_log('active', "clear_session")
+
+
     model = load_model(weights)
     
     preds = model.predict(processsed_img,batch_size=None,steps=1)
