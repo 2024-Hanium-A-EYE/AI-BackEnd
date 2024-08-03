@@ -1,12 +1,12 @@
+#############################################################
+# AEYE AI Test
+# Created By Yoonchul Chung
+# Created At 2024.08.03
+# Welcome to Visit Github : https://github.com/Yoonchulchung
+#############################################################
+
 import requests
 import json
-
-# Test if AI is working well
-# Test -> AI Back -> AI OpticNET -> AI Back -> Test
-# Good Test == "GOOD"
-# Bad Test == "BAD"
-
-# Everything is json
 
 url = 'http://localhost:6000/api/ai-inference' # AI Back
 
