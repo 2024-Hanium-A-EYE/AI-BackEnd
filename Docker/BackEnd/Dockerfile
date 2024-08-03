@@ -29,7 +29,7 @@ RUN pip install -r dependencies_AI.txt
 # Copy DIR
 WORKDIR /app/
 
-COPY ../../AEYE_AI_Back_3_2/ /app/
+COPY /AEYE_AI_Back_3_2/ /app/
 
 #############################################################
 # Result

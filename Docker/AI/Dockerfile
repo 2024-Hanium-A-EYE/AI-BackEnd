@@ -18,10 +18,12 @@ RUN pip install opencv-python
 RUN pip install Flask==1.1.4
 RUN pip install colorama
 
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
+
 #############################################################
 # Copy Files
 WORKDIR /app/
-COPY ../../AI/ /app/
+COPY /AI/ /app/
 
 #############################################################
 # Cleaning

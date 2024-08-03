@@ -70,7 +70,7 @@ intialize_docker_install () {
     gnupg \
     lsb-release
   
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg -y --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
   
   echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
@@ -110,8 +110,7 @@ install_nvidia_docker() {
 
   sudo systemctl restart docker
 
-  sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
-
+  sudo apt-get install -y nvidia-container-toolkit
 }
 
 install() {
@@ -139,10 +138,18 @@ install() {
     echo -e "${RED}[3/$total_progress] ${NC}Failed to install Nvidia Docker due to install_status_vel = 1"
   fi
 
-  fi [ $install_status_vel -eq 0 ]; then
+  if [ $install_status_vel -eq 0 ]; then
+    echo -e "${BLUE}[3/$total_progress] ${NC}Install docker-compose....."
+    figlet Install 
+    figlet Docker Compose
+    sudo apt-get install docker-compose -y
+    sudo rm /usr/local/bin/docker-compose
+    sudo curl -L "https://github.com/docker/compose/releases/download/$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
 
+    cd Docker && sudo ./install.sh
   else
-
+    echo -e "${RED}[3/$total_progress] ${NC}Failed to install Nvidia Docker due to install_status_vel = 1"
   fi
 }
 

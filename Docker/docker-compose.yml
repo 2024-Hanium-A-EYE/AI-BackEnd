@@ -5,7 +5,7 @@
 # Welcome to Visit Github : https://github.com/Yoonchulchung
 #############################################################
 
-version: '3.8'
+version: '3.3'
 
 services:
   backend:
@@ -32,7 +32,6 @@ services:
     - "3000:3000"
     - "6006:6006"
     - "8888:8888"
-    runtime: nvidia # If NVIDIA Container Toolkit is not installed, turn off the code.
     environment:
       - NVIDIA_VISIBLE_DEVICES=all # If NVIDIA Container Toolkit is not installed, turn off the code.
       - NVIDIA_DRIVER_CAPABILITIES=compute,utility # If NVIDIA Container Toolkit is not installed, turn off the code.
