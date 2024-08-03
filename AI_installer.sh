@@ -1,3 +1,10 @@
+#############################################################
+# AEYE AI Installer
+# Created By Yoonchul Chung
+# Created At 2024.08.03
+# Welcome to Visit Github : https://github.com/Yoonchulchung
+#############################################################
+
 #!/bin/bash
 
 RED='\033[38;5;196m'

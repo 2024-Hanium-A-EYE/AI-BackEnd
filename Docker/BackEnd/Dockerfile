@@ -1,3 +1,9 @@
+#############################################################
+# AEYE AI BackEnd DockerFile
+# Created By Yoonchul Chung
+# Created At 2024.08.03
+# Welcome to Visit Github : https://github.com/Yoonchulchung
+#############################################################
 FROM python:3.6-slim
 
 
@@ -29,6 +35,6 @@ COPY ../../AEYE_AI_Back_3_2/ /app/
 # Result
 
 
-EXPOSE 2000
+EXPOSE 8000
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:2000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

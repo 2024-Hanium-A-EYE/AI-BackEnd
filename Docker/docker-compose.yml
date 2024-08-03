@@ -1,3 +1,10 @@
+#############################################################
+# AEYE AI Docker Compose File
+# Created By Yoonchul Chung
+# Created At 2024.08.03
+# Welcome to Visit Github : https://github.com/Yoonchulchung
+#############################################################
+
 version: '3.8'
 
 services:
@@ -8,12 +15,12 @@ services:
       context: ..
       dockerfile: Docker/BackEnd/Dockerfile
     ports:
-    - "2000:2000"
+    - "8000:8000"
     volumes:  
     - ../AEYE_AI_Back_3_2/:/app/
     networks:
       - ai_network
-    command: python manage.py runserver 0.0.0.0:2000
+    command: python manage.py runserver 0.0.0.0:8000
     
   ai:
     image: aeye_ai:1.0
@@ -22,7 +29,7 @@ services:
       context: ..
       dockerfile: Docker/AI/Dockerfile
     ports:
-    - "7070:7070"
+    - "3000:3000"
     - "6006:6006"
     - "8888:8888"
     volumes:

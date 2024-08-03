@@ -1,32 +1,8 @@
 #############################################################
-# AEYE AI Server Dependencies
+# AEYE AI Django Docker Builder
 # Created By Yoonchul Chung
 # Created At 2024.08.03
 # Welcome to Visit Github : https://github.com/Yoonchulchung
 #############################################################
 
-# Python == 3.6
-
-# Django Web Framework
-Django == 3.2
-
-# REST API Framework
-djangorestframework == 3.13.1
-
-# request
-requests
-
-# nodejs
-nodejs
-
-# npm
-npm
-
-# pytest
-pytest
-
-# colorama
-colorama
-
-# pillow
-pillow
+docker build --progress=plain 2>&1 | tee build.log

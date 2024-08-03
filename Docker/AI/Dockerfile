@@ -1,3 +1,9 @@
+#############################################################
+# AEYE AI OpticNet DockerFile
+# Created By Yoonchul Chung
+# Created At 2024.08.03
+# Welcome to Visit Github : https://github.com/Yoonchulchung
+#############################################################
 FROM tensorflow/tensorflow:1.12.0-rc1-gpu-py3
 
 
@@ -23,9 +29,10 @@ COPY ../../AI/ /app/
 #############################################################
 # RUN
 
-EXPOSE 7070
+EXPOSE 3000
 EXPOSE 8888
+EXPOSE 6006
 # CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=5000", "--no-browser", "--allow-root"]
 
-CMD ["python", "run.py", "--p", "7070"]
+CMD ["python", "run.py", "--p", "3000"]
 
