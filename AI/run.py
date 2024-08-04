@@ -86,7 +86,12 @@ def ai_inference() :
         return send_response('error', 400, 'No file part', name)
 
     file = request.files['file']
+
+    ######################
+    # TO - Do : 외부로 받은 File 데이터를 로컬에 저장
     
+    ######################
+
     if file.filename == '':
         print_log("error", "Server Received Empty File")
         return send_response('error', 400, 'No selected file', request.files) 
